@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const useClipStore = defineStore(
     'clip',
     () => {
-        const visibility = ref("private");
+        const visibility = ref("public");
         function setVisibility(newVisibility: string) {
             visibility.value = newVisibility
         }
