@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "include": [
+        "/*"
+    ],
+    "exclude": [
+        "index.html",
+        "favicon.ico",
+        "/utils/*",
+        "/assets/*"
+    ]
+}
