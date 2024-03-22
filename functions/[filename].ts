@@ -31,7 +31,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         headers.set('content-type', mime.getType(filename as string) || "application/octet-stream");
     }
     if (response.Metadata['x-store-type'] === "text") {
-        headers.set('content-type', 'text/plain');
+        headers.set('content-type', 'text/plain;charset=utf-8');
     }
     headers.set('content-length', response.ContentLength.toString());
     headers.set('last-modified', response.LastModified.toUTCString());
