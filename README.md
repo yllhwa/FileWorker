@@ -4,6 +4,8 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
 
 ## ✏️部署
 
+更新无需重新部署，在 fork 的仓库里同步上游即可，cloudflare 会自动更新。
+
 1. Fork 本仓库
 2. 部署 Pages
 
