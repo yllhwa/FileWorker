@@ -6,7 +6,7 @@ import type { _Object } from '@aws-sdk/client-s3';
 
 let uploadedFiles: Ref<_Object[]> = ref([]);
 
-function decodeKey(key) {
+function decodeKey(key?: string) {
     return decodeURIComponent(key)
 }
 
