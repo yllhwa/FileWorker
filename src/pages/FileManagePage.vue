@@ -13,7 +13,7 @@ function decodeKey(key) {
 const refreshFiles = async () => {
     const res = await ListFiles();
     if (res.Contents) {
-        uploadedFiles.value = res.Contents.map(c => ({ ...c, name: decodeKey(c.Key) }));
+        uploadedFiles.value = res.Contents;
     }
 };
 
@@ -38,7 +38,7 @@ const onDeleteFileClick = async (key?: string) => {
                 class="w-full flex flex-row items-center mt-4 rounded border-1 border-gray-300 px-2 py-1">
                 <div class="w-10 h-10 i-mdi-file-document-outline"></div>
                 <div class="flex flex-col">
-                    <a class="text-lg font-semibold" :href="`/${file.Key}`" target="_blank">{{ file.name }}</a>
+                    <a class="text-lg font-semibold" :href="`/${file.Key}`" target="_blank">{{ decodeKey(file.Key) }}</a>
                     <div class="text-sm text-gray">{{ formatBytes(file.Size ?? 0) }}</div>
                 </div>
                 <div class="ml-auto w-6 h-6 i-mdi-trash-can-outline cursor-pointer"
