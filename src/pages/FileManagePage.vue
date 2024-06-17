@@ -12,8 +12,10 @@ function decodeKey(key: string) {
 
 const refreshFiles = async () => {
     const res = await ListFiles();
-    if (res.Contents) {
+    if (res.hasOwnProperty('Contents') && res.Contents) {
         uploadedFiles.value = res.Contents;
+    } else {
+        uploadedFiles.value = [];
     }
 };
 
