@@ -22,8 +22,9 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
 3. 创建 R2 存储桶
 
    Cloudflare DashBoard -> R2 -> Create Bucket
+   记住创建的桶名，后面环境变量处会使用
 
-4. 获取 R2 存储桶的信息
+5. 获取 R2 存储桶的信息
 
    Cloudflare DashBoard -> R2 -> Manage R2 API Tokens -> Create API token
 
@@ -34,7 +35,7 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
 
    这些信息不会再次显示。
 
-5. 设置环境变量
+6. 设置环境变量
 
    Cloudflare DashBoard -> {Your Worker} -> Settings -> Environment Variables -> (Production)Add variables
 
@@ -44,7 +45,7 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
 
       > REGION=auto
 
-   2. 存储桶名称
+   2. 存储桶名称，这里不是固定的，是上一步中创建存储桶的桶名
 
       > BUCKET=store
 
@@ -63,7 +64,7 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
    6. 访问密码（自己设置）
       > PASSWORD=123456
 
-6. 重新部署
+7. 重新部署
 
    Cloudflare DashBoard -> {Your Worker} -> Deployments -> All deployments -> Retry deployment
 
