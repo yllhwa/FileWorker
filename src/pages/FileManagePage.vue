@@ -30,6 +30,26 @@ const onDeleteFileClick = async (key?: string) => {
     await DeleteFile(key);
     await refreshFiles();
 };
+
+const onDownloadClick = (key?: string) => {
+    if (!key) {
+        return;
+    }
+    const link = document.createElement('a');
+    link.href = `/${key}`;
+    link.download = decodeKey(key);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+const onCopyDownloadLinkClick = async (key?: string) => {
+    if (!key) {
+        return;
+    }
+    const url = `${window.location.origin}/${key}`;
+    await navigator.clipboard.writeText(url);
+};
 </script>
 
 <template>
@@ -40,11 +60,17 @@ const onDeleteFileClick = async (key?: string) => {
                 class="w-full flex flex-row items-center mt-4 rounded border-1 border-gray-300 px-2 py-1">
                 <div class="w-10 h-10 i-mdi-file-document-outline"></div>
                 <div class="flex flex-col title">
-                    <a class="text-lg font-semibold" :title="decodeKey(file.Key!)" :href="`/${file.Key}`" target="_blank">{{ decodeKey(file.Key!) }}</a>
+                    <div class="text-lg font-semibold" :title="decodeKey(file.Key!)">{{ decodeKey(file.Key!) }}</div>
                     <div class="text-sm text-gray">{{ formatBytes(file.Size ?? 0) }}</div>
                 </div>
-                <div class="ml-auto w-6 h-6 i-mdi-trash-can-outline cursor-pointer"
-                    @click="onDeleteFileClick(file.Key)"></div>
+                <div class="ml-auto flex gap-2">
+                    <div class="w-6 h-6 i-mdi-download cursor-pointer"
+                        @click="onDownloadClick(file.Key)" title="下载"></div>
+                    <div class="w-6 h-6 i-mdi-content-copy cursor-pointer"
+                        @click="onCopyDownloadLinkClick(file.Key)" title="拷贝下载链接"></div>
+                    <div class="w-6 h-6 i-mdi-trash-can-outline cursor-pointer"
+                        @click="onDeleteFileClick(file.Key)" title="删除"></div>
+                </div>
             </div>
         </div>
     </div>

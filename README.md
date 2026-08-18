@@ -64,7 +64,7 @@ FileWorker 是一个轻量级的文件管理和在线剪贴板，基于 Cloudfla
    6. 访问密码（自己设置）
       > PASSWORD=123456
 
-7. 重新部署
+7. 重新再部署
 
    Cloudflare DashBoard -> {Your Worker} -> Deployments -> All deployments -> Retry deployment
 
