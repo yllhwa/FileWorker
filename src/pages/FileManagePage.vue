@@ -42,6 +42,14 @@ const onDownloadClick = (key?: string) => {
     link.click();
     document.body.removeChild(link);
 };
+
+const onCopyDownloadLinkClick = async (key?: string) => {
+    if (!key) {
+        return;
+    }
+    const url = `${window.location.origin}/${key}`;
+    await navigator.clipboard.writeText(url);
+};
 </script>
 
 <template>
@@ -58,6 +66,8 @@ const onDownloadClick = (key?: string) => {
                 <div class="ml-auto flex gap-2">
                     <div class="w-6 h-6 i-mdi-download cursor-pointer"
                         @click="onDownloadClick(file.Key)" title="下载"></div>
+                    <div class="w-6 h-6 i-mdi-content-copy cursor-pointer"
+                        @click="onCopyDownloadLinkClick(file.Key)" title="拷贝下载链接"></div>
                     <div class="w-6 h-6 i-mdi-trash-can-outline cursor-pointer"
                         @click="onDeleteFileClick(file.Key)" title="删除"></div>
                 </div>
